@@ -4,12 +4,14 @@
 
 ArthaSetu is a modern, high-contrast, Gen Z financial survival web application designed to help young adults manage limited monthly budgets (default ₹10,000) over a 30-day period. Instead of backward-looking passive categorization, ArthaSetu acts as a forward-looking decision engine with real-time runway forecasting, safe daily allowances, and an interactive What-If simulation laboratory.
 
+This application is built as a **100% frontend-only demonstration** using React, TypeScript, Vite, Tailwind CSS, and Zustand. All state is persisted locally via `localStorage`, requiring zero external backends, zero cloud setup, and zero API keys.
+
 ---
 
 ## 🧭 Judge's Quick Tour: 5 Things to Try First
 
 1. **Instant Demo Launch**:  
-   Click **"Try Demo Mode (Instant Sandbox)"** on the sign-in screen. Notice that all data is isolated in `localStorage` with a visible amber **"Demo mode active"** banner. The Day counter displays today's real day of the month.
+   Click **"Try Demo Mode (Instant Sandbox)"** on the sign-in screen (or click **"Continue with Google"** for the simulated user profile). Notice that all data is isolated in `localStorage` with a visible amber **"Demo mode active"** banner. The Day counter displays today's real day of the month.
 2. **Log the Verification Expense (₹540)**:  
    Navigate to **Activity** (or click the Activity tab), enter `540` and type `"Zomato Biryani"` into the free-text field *"Where did you spend it?"*. Click **Record Expense**. Return to the **Dashboard** and observe:
    - **Available to spend** drops from ₹10,000 to **₹9,460**.
@@ -38,7 +40,7 @@ ArthaSetu is a modern, high-contrast, Gen Z financial survival web application d
 | **Goals & Contribution Verdict** | Inline contribute panel, modal with Safe/Tight/Critical verdicts, balance validation, and "Contribute anyway" safeguard | `src/pages/Goals.tsx` |
 | **What-If Simulation Lab** | Empty inputs only, Spend/Save/Income/Subscription cancellation, dark green live preview, health pts display, dual path chart | `src/pages/WhatIfLab.tsx` |
 | **Commitments & Subscriptions** | Real-time pause/cancel toggles, due days, load breakdown, auto-deduct tracking | `src/pages/Commitments.tsx` |
-| **Firebase Auth + Firestore** | Real Google OAuth popup/redirect, missing env var detection banner, security rules locking `users/{uid}/**` | `src/lib/firebase.ts`, `firestore.rules` |
+| **Frontend Auth & Data** | Client-side user switching, zero Firebase dependencies, clean localStorage persistence | `src/store/budgetStore.ts` |
 | **Demo Mode Isolation** | Sandboxed localStorage experience with zero cloud writes and visible banner | `src/store/budgetStore.ts` |
 | **WCAG AA & Indian Currency** | Cream, Orange, Forest Green tokens; ₹ formatting with en-IN numbering and `tabular-nums` | `src/index.css`, `src/lib/finance.ts` |
 
@@ -58,7 +60,7 @@ $$\text{daysLeft} = \text{periodLength} - \text{currentDay}$$
 
 ### 3. Safe Daily Allowance
 $$\text{safeDailyAllowance} = \left\lfloor \frac{\text{remainingBalance} - \text{upcomingCommitments} - \text{upcomingSubscriptions} - \text{plannedGoalContributions}}{\max(1, \text{daysLeft})} \right\rfloor$$
-*Protects non-negotiable rent and upcoming bills from being spent on discretionary chai and dinners.*
+*Protects non-negotiable rent and upcoming bills from being spent on discretionary expenses.*
 
 ### 4. Month-End Forecast
 $$\text{averageDailySpend} = \frac{\text{totalExpenses}}{\text{currentDay}}$$
@@ -90,28 +92,6 @@ Score Bands:
 - **Headings & Dark Cards**: `#1F4D3A` (Deep Forest Green)
 - **Mint Accent**: `#DCEBDD` (Pill badging & progress tracking)
 - **Typography**: **Fraunces** for expressive headings and **DM Sans** for legible body text, loaded via Google Fonts.
-
----
-
-## 🔐 Firebase Setup Instructions
-
-1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
-2. Enable **Authentication** -> **Google Sign-In Provider**.
-3. Enable **Cloud Firestore** in production mode.
-4. Deploy the provided [`firestore.rules`](file:///d:/ArthaSetu/firestore.rules):
-   ```bash
-   firebase deploy --only firestore:rules
-   ```
-5. Copy `.env.example` to `.env.local` and add your keys:
-   ```env
-   VITE_FIREBASE_API_KEY=AIzaSy...
-   VITE_FIREBASE_AUTH_DOMAIN=your-app.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=your-app
-   VITE_FIREBASE_STORAGE_BUCKET=your-app.appspot.com
-   VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
-   VITE_FIREBASE_APP_ID=1:123456789:web:...
-   ```
-*If any variable is omitted, the app displays a clear notification banner on `/login` without breaking.*
 
 ---
 

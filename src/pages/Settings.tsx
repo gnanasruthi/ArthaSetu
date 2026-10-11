@@ -85,7 +85,7 @@ export const Settings: React.FC = () => {
           </p>
         </div>
         <span className="px-3 py-1 rounded-full bg-[#DCEBDD] text-brand-green text-xs font-bold border border-[#C5DEC7]">
-          {user?.isDemo ? 'Local Demo' : 'Firebase Cloud Sync'}
+          {user?.isDemo ? 'Demo Sandbox' : 'Local Storage'}
         </span>
       </div>
 

@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
   calculateFinancialMetrics,
-  calculateCurrentDay,
 } from './finance';
 import type { UserBudgetSettings, Transaction, Commitment, Subscription, Goal } from '../types';
 

@@ -1,41 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  AlertTriangle,
   Play,
   ShieldCheck,
   Sparkles,
   TrendingUp,
-  AlertCircle,
 } from 'lucide-react';
 import { BrandLogo } from '../components/common/BrandLogo';
 import { useBudgetStore } from '../store/budgetStore';
-import {
-  signInWithGoogle,
-  missingFirebaseVars,
-  isFirebaseConfigured,
-} from '../lib/firebase';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
+  const loginAsFrontendUser = useBudgetStore((state) => state.loginAsFrontendUser);
   const enterDemoMode = useBudgetStore((state) => state.enterDemoMode);
-  const [authError, setAuthError] = useState<string | null>(null);
-  const [isSigningIn, setIsSigningIn] = useState(false);
 
-  const handleGoogleSignIn = async () => {
-    setAuthError(null);
-    setIsSigningIn(true);
-    try {
-      await signInWithGoogle();
-      navigate('/');
-    } catch (err: unknown) {
-      console.error('Google Sign-In Error:', err);
-      const error = err as { code?: string; message?: string };
-      // Show real error message on screen
-      setAuthError(error.message || 'Google sign-in encountered an error. Please try again.');
-    } finally {
-      setIsSigningIn(false);
-    }
+  const handleGoogleSignIn = () => {
+    // Frontend-only login flow without external Firebase popup
+    loginAsFrontendUser({
+      displayName: 'Rohan Verma',
+      email: 'rohan.verma@example.com',
+    });
+    navigate('/');
   };
 
   const handleTryDemo = () => {
@@ -45,32 +30,6 @@ export const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FFF8EC] text-[#1B2A22] flex flex-col justify-between p-4 sm:p-6 lg:p-8">
-      {/* Top Banner if Firebase env vars are missing */}
-      {!isFirebaseConfigured && (
-        <div className="max-w-4xl mx-auto w-full mb-6 p-4 rounded-2xl bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm">
-          <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-800 shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <h4 className="font-bold text-amber-950">
-                Firebase Environment Configuration Needed
-              </h4>
-              <p className="leading-relaxed">
-                The following variables are missing in your environment:
-              </p>
-              <ul className="list-disc list-inside font-mono text-xs text-amber-900 bg-amber-50/70 p-2 rounded-lg border border-amber-200 mt-1">
-                {missingFirebaseVars.map((v) => (
-                  <li key={v}>{v}</li>
-                ))}
-              </ul>
-              <p className="text-xs text-amber-900 mt-1">
-                See <code className="font-mono bg-amber-200/60 px-1 py-0.5 rounded">.env.example</code> to configure Google Auth &amp; Firestore.
-                In the meantime, you can experience all full features instantly via the <strong>&ldquo;Try Demo Mode&rdquo;</strong> button below.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Main Container */}
       <div className="max-w-md w-full mx-auto my-auto py-8">
         <div className="bg-[#FFFDF7] border border-[#EADFC8] rounded-3xl p-6 sm:p-8 shadow-xl text-center">
@@ -90,24 +49,13 @@ export const Login: React.FC = () => {
             Simulate financial decisions, protect upcoming bills, and prevent running out of money before next payday.
           </p>
 
-          {/* Real Error Message Display on screen */}
-          {authError && (
-            <div className="mb-5 p-3.5 rounded-xl bg-red-100 border border-red-300 text-red-900 text-xs text-left flex items-start gap-2 animate-in fade-in">
-              <AlertCircle className="w-4 h-4 text-red-700 shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold">Sign-In Failed:</span> {authError}
-              </div>
-            </div>
-          )}
-
           {/* Action Buttons */}
           <div className="space-y-3">
-            {/* Google Sign In */}
+            {/* Google Sign In (Frontend Demonstration Mode) */}
             <button
               type="button"
-              disabled={isSigningIn || !isFirebaseConfigured}
               onClick={handleGoogleSignIn}
-              className="w-full py-3 px-4 rounded-xl border border-[#EADFC8] bg-white hover:bg-[#FFF8EC] font-semibold text-xs sm:text-sm text-brand-green transition-all shadow-2xs flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl border border-[#EADFC8] bg-white hover:bg-[#FFF8EC] font-semibold text-xs sm:text-sm text-brand-green transition-all shadow-2xs flex items-center justify-center gap-3 active:scale-98 cursor-pointer"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path
@@ -127,7 +75,7 @@ export const Login: React.FC = () => {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
                 />
               </svg>
-              <span>{isSigningIn ? 'Connecting to Google...' : 'Continue with Google'}</span>
+              <span>Continue with Google</span>
             </button>
 
             {/* Try Demo Button */}
