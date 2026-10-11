@@ -15,10 +15,10 @@ export const ToastContainer: React.FC = () => {
     >
       {toasts.map((toast) => {
         const iconConfig = {
-          success: { icon: CheckCircle2, color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200' },
-          info: { icon: Info, color: 'text-sky-700', bg: 'bg-sky-50', border: 'border-sky-200' },
-          warning: { icon: AlertTriangle, color: 'text-amber-700', bg: 'bg-amber-50', border: 'border-amber-200' },
-          error: { icon: AlertCircle, color: 'text-red-700', bg: 'bg-red-50', border: 'border-red-200' },
+          success: { icon: CheckCircle2, color: 'text-[#225539]', bg: 'bg-[#EBF3ED]', border: 'border-[#CCE2D2]' },
+          info: { icon: Info, color: 'text-[#542743]', bg: 'bg-[#F9EDF2]', border: 'border-[#E6BCCE]' },
+          warning: { icon: AlertTriangle, color: 'text-[#8A4524]', bg: 'bg-[#FDF1ED]', border: 'border-[#F5B39B]' },
+          error: { icon: AlertCircle, color: 'text-[#6B1829]', bg: 'bg-[#FBECF0]', border: 'border-[#ECAAB8]' },
         }[toast.type];
 
         const IconComponent = iconConfig.icon;
@@ -26,16 +26,16 @@ export const ToastContainer: React.FC = () => {
         return (
           <div
             key={toast.id}
-            className={`pointer-events-auto p-4 rounded-xl border ${iconConfig.border} ${iconConfig.bg} shadow-lg flex items-start gap-3 bg-white/95 backdrop-blur-sm transition-all animate-in slide-in-from-right-4`}
+            className={`pointer-events-auto p-4 rounded-2xl border ${iconConfig.border} ${iconConfig.bg} shadow-lg flex items-start gap-3 bg-white/95 backdrop-blur-sm transition-all animate-in slide-in-from-right-4`}
             role="alert"
           >
             <IconComponent className={`w-5 h-5 shrink-0 ${iconConfig.color} mt-0.5`} />
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-semibold text-brand-green leading-snug">
+              <h4 className="text-sm font-semibold text-[#542743] leading-snug">
                 {toast.title}
               </h4>
               {toast.description && (
-                <p className="text-xs text-brand-muted mt-0.5 leading-relaxed">
+                <p className="text-xs text-[#817780] mt-0.5 leading-relaxed">
                   {toast.description}
                 </p>
               )}
@@ -43,7 +43,7 @@ export const ToastContainer: React.FC = () => {
             <button
               type="button"
               onClick={() => removeToast(toast.id)}
-              className="text-brand-muted hover:text-brand-green p-1 rounded-md transition-colors"
+              className="text-[#817780] hover:text-[#542743] p-1 rounded-md transition-colors cursor-pointer"
               aria-label="Dismiss notification"
             >
               <X className="w-4 h-4" />

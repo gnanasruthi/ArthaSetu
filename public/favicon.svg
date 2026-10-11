@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <rect width="48" height="48" rx="12" fill="#1F4D3A"/>
+  <rect width="48" height="48" rx="12" fill="#542743"/>
   <!-- Bridge arch -->
-  <path d="M8 36C12 24 20 20 24 20C28 20 36 24 40 36" stroke="#DCEBDD" stroke-width="3" stroke-linecap="round"/>
-  <path d="M12 36V28" stroke="#DCEBDD" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M36 36V28" stroke="#DCEBDD" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="8" y1="36" x2="40" y2="36" stroke="#F28C28" stroke-width="3" stroke-linecap="round"/>
+  <path d="M8 36C12 24 20 20 24 20C28 20 36 24 40 36" stroke="#F5B39B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M12 36V28" stroke="#F5B39B" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M36 36V28" stroke="#F5B39B" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="8" y1="36" x2="40" y2="36" stroke="#F5B39B" stroke-width="3" stroke-linecap="round"/>
   <!-- Rupee symbol sitting on the bridge -->
-  <path d="M19 12H29M19 16H27M19 12V24M24 16C27 16 28.5 18 27.5 20.5C26.5 23 24 23.5 21 23.5L28 32" stroke="#FFF8EC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 12H29M19 16H27M19 12V24M24 16C27 16 28.5 18 27.5 20.5C26.5 23 24 23.5 21 23.5L28 32" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

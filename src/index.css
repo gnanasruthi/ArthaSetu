@@ -1,23 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream-bg: #FFF8EC;
-  --color-cream-card: #FFFDF7;
-  --color-cream-border: #EADFC8;
-  --color-brand-orange: #F28C28;
-  --color-brand-orange-hover: #DE7917;
-  --color-brand-green: #1F4D3A;
-  --color-brand-green-dark: #153629;
-  --color-brand-green-light: #2A664E;
-  --color-brand-mint: #DCEBDD;
-  --color-brand-mint-dark: #B9D6BB;
-  --color-brand-text: #1B2A22;
-  --color-brand-muted: #6B7A70;
+  --color-ivory-bg: #F5F0EA;
+  --color-card-white: #FFFFFF;
+  --color-border-subtle: #E8DDD5;
 
-  --color-risk-low: #15803D;
-  --color-risk-medium: #B45309;
-  --color-risk-high: #EA580C;
-  --color-risk-critical: #991B1B;
+  --color-plum-primary: #542743;
+  --color-plum-deep: #3D1C35;
+  --color-plum-hover: #451F37;
+  --color-plum-light: #6E3358;
+
+  --color-rose-dusty: #A66A8D;
+  --color-rose-light: #F4E8EE;
+
+  --color-peach-accent: #F5B39B;
+  --color-peach-light: #FDF1ED;
+  --color-peach-dark: #E4977C;
+
+  --color-text-main: #302630;
+  --color-text-secondary: #817780;
+
+  /* Theme tokens */
+  --color-cream-bg: #F5F0EA;
+  --color-cream-card: #FFFFFF;
+  --color-cream-border: #E8DDD5;
+  --color-brand-orange: #542743;
+  --color-brand-orange-hover: #3D1C35;
+  --color-brand-green: #542743;
+  --color-brand-green-dark: #3D1C35;
+  --color-brand-green-light: #6E3358;
+  --color-brand-mint: #FDF1ED;
+  --color-brand-text: #302630;
+  --color-brand-muted: #817780;
+
+  --color-risk-low: #2E6B4E;
+  --color-risk-medium: #A45C33;
+  --color-risk-high: #9C334D;
+  --color-risk-critical: #7A1C2E;
 
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -25,8 +44,8 @@
 
 @layer base {
   body {
-    background-color: var(--color-cream-bg);
-    color: var(--color-brand-text);
+    background-color: var(--color-ivory-bg);
+    color: var(--color-text-main);
     font-family: var(--font-sans);
     margin: 0;
     min-height: 100vh;
@@ -34,7 +53,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    color: var(--color-brand-green);
+    color: var(--color-plum-primary);
     letter-spacing: -0.02em;
   }
 }
@@ -45,7 +64,7 @@
 
 /* Accessible focus ring */
 :focus-visible {
-  outline: 2px solid var(--color-brand-orange);
+  outline: 2px solid var(--color-plum-primary);
   outline-offset: 2px;
 }
 

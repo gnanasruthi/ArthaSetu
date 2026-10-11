@@ -14,7 +14,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <div
-        className="relative flex items-center justify-center rounded-xl bg-brand-green text-cream-bg shadow-sm"
+        className="relative flex items-center justify-center rounded-xl bg-[#542743] text-white shadow-xs shrink-0"
         style={{ width: size, height: size }}
         aria-hidden="true"
       >
@@ -27,14 +27,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           {/* Bridge arch */}
           <path
             d="M8 35C13 24 20 20 24 20C28 20 35 24 40 35"
-            stroke="#DCEBDD"
+            stroke="#F5B39B"
             strokeWidth="3.2"
             strokeLinecap="round"
           />
           {/* Bridge vertical suspension struts */}
           <path
             d="M13 35V27M35 35V27M24 35V20"
-            stroke="#DCEBDD"
+            stroke="#F5B39B"
             strokeWidth="2.2"
             strokeLinecap="round"
           />
@@ -44,14 +44,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
             y1="35"
             x2="41"
             y2="35"
-            stroke="#F28C28"
+            stroke="#F5B39B"
             strokeWidth="3.2"
             strokeLinecap="round"
           />
           {/* Indian Rupee Mark resting above bridge */}
           <path
             d="M18 10H30M18 14.5H28M18 10V22M23.5 14.5C26.5 14.5 28 16.5 27 19C26 21.5 23.5 22 20.5 22L28 31"
-            stroke="#FFF8EC"
+            stroke="#FFFFFF"
             strokeWidth="2.6"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -61,10 +61,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
       {showText && (
         <div className="flex flex-col min-w-0">
-          <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-brand-green leading-none">
+          <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#542743] leading-none">
             ArthaSetu
           </span>
-          <span className="text-[11px] font-medium text-brand-muted tracking-tight truncate mt-0.5">
+          <span className="text-[11px] font-medium text-[#817780] tracking-tight truncate mt-0.5">
             Bridge your money to month-end
           </span>
         </div>

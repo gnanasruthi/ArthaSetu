@@ -17,44 +17,43 @@ export const RiskBadge: React.FC<RiskBadgeProps> = ({
     Low: {
       icon: ShieldCheck,
       label: 'Low Risk',
-      textColor: 'text-emerald-800',
-      iconColor: 'text-emerald-700',
-      pillBg: 'bg-[#DCEBDD]',
-      dotColor: 'bg-emerald-600',
+      textColor: 'text-[#225539]',
+      iconColor: 'text-[#225539]',
+      pillBg: 'bg-[#EBF3ED]',
+      borderColor: 'border-[#CCE2D2]',
     },
     Medium: {
       icon: AlertTriangle,
       label: 'Medium Risk',
-      textColor: 'text-amber-900',
-      iconColor: 'text-amber-700',
-      pillBg: 'bg-amber-100',
-      dotColor: 'bg-amber-600',
+      textColor: 'text-[#8A4524]',
+      iconColor: 'text-[#8A4524]',
+      pillBg: 'bg-[#FDF1ED]',
+      borderColor: 'border-[#F5B39B]',
     },
     High: {
       icon: AlertOctagon,
       label: 'High Risk',
-      textColor: 'text-rose-900',
-      iconColor: 'text-rose-600',
-      pillBg: 'bg-rose-100',
-      dotColor: 'bg-rose-600',
+      textColor: 'text-[#85274C]',
+      iconColor: 'text-[#85274C]',
+      pillBg: 'bg-[#F9EDF2]',
+      borderColor: 'border-[#E6BCCE]',
     },
     Critical: {
       icon: Flame,
       label: 'Critical Risk',
-      textColor: 'text-red-950',
-      iconColor: 'text-red-700',
-      pillBg: 'bg-red-200',
-      dotColor: 'bg-red-700',
+      textColor: 'text-[#6B1829]',
+      iconColor: 'text-[#6B1829]',
+      pillBg: 'bg-[#FBECF0]',
+      borderColor: 'border-[#ECAAB8]',
     },
   }[level];
 
   const IconComponent = config.icon;
 
   if (variant === 'mint-pill') {
-    // Specifically styled for readability on dark cards (e.g. Hero card)
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DCEBDD] text-[#153629] text-xs font-semibold tracking-wide shadow-sm border border-[#C5DEC7] ${className}`}
+        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${config.pillBg} ${config.textColor} text-xs font-semibold tracking-wide shadow-2xs border ${config.borderColor} ${className}`}
         role="status"
         aria-label={`Risk level: ${config.label}`}
       >
@@ -66,7 +65,7 @@ export const RiskBadge: React.FC<RiskBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full ${config.pillBg} ${config.textColor} text-xs font-semibold ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full ${config.pillBg} ${config.textColor} text-xs font-semibold border ${config.borderColor} ${className}`}
       role="status"
       aria-label={`Risk level: ${config.label}`}
     >
